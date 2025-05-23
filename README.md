@@ -128,7 +128,6 @@ The goal is to build a RAG system capable of answering specific questions regard
 
 #### 4. Fine-Tuning Milestone
 - **Objective:** Fine-tune a pre-trained Hugging Face model on the ROS2 subdomains.
-- **Important:** Only CS370 Honors and CS-GY-6613 students are required to perform fine-tuning.
 - **Tool:** Utilize existing fine-tuning tutorials, Google Colab, or other cloud services for model training.
 
 #### 5. Deploying the App Milestone
