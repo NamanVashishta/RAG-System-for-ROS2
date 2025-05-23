@@ -11,7 +11,7 @@ We have fine-tuned a text-generation model for answering questions related to RO
 ## Project File Structure
 
 ```
-RAG-Project/
+RAG-Project/app
 ├── app/                   # Main application directory
 │   ├── app.py             # FastAPI application for API services
 │   ├── gradio_app.py      # Gradio application for user interface
