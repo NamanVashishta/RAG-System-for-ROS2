@@ -1,10 +1,21 @@
-# RAG System for ROS2 Navigation - Project Overview
+# RAG System for ROS2 Navigation
+
+> A full-stack Retrieval-Augmented Generation system for answering domain-specific
+> developer queries over ROS2 documentation and video transcripts.
+> Combines **Qdrant vector search**, **fine-tuned Sentence Transformers**, and a
+> **FastAPI microservice** — fully containerized via Docker.
+
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)]()
+[![Docker](https://img.shields.io/badge/Docker-Containerized-blue)]()
+[![HuggingFace](https://img.shields.io/badge/Model-HuggingFace-orange)](https://huggingface.co/ChaosKingNV/finetuned-ros2-model)
+
+---
 
 ## Model Information
 
-We have fine-tuned a text-generation model for answering questions related to ROS2 navigation, motion planning, and simulation.
+Fine-tuned a text-generation model for answering questions related to ROS2 navigation, motion planning, and simulation.
 
-**[Link to the Finetuned Trained Model](https://huggingface.co/ChaosKingNV/finetuned-ros2-model)**
+**[Link to the Fine-Tuned Model on Hugging Face](https://huggingface.co/ChaosKingNV/finetuned-ros2-model)**
 
 ---
 
@@ -59,7 +70,7 @@ RAG-Project/app
    - **FastAPI API:** Handles API requests for querying the model.
    - **Gradio Interface:** Provides a user-friendly web interface.
    - **Vector Search:** Retrieves relevant documents from Qdrant based on query embeddings.
-   - **Answer Generation:** Combines search results with the model’s capabilities to generate answers.
+   - **Answer Generation:** Combines search results with the model's capabilities to generate answers.
 
 ---
 
@@ -67,8 +78,8 @@ RAG-Project/app
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-repository/rag-project.git
-   cd rag-project
+   git clone https://github.com/NamanVashishta/RAG-System-for-ROS2.git
+   cd RAG-System-for-ROS2
    ```
 
 2. **Start the Docker Containers:**
@@ -81,64 +92,35 @@ RAG-Project/app
    - **Gradio Web App:** `http://localhost:7860`
 
 ---
+
 ## Screenshots
 
 ![SS1](SS/SS1.jpg)
 ![SS2](SS/SS2.jpg)
 ![SS3](SS/SS3.jpg)
 
+---
+
 ## Project Description
 
 ### Overview
-The **Retrieval Augmented Generation (RAG)** system is designed to assist ROS2 robotics developers with navigation stack development for agents with egomotion. The system focuses on specific subdomains, including:
+The **Retrieval Augmented Generation (RAG)** system is designed to assist ROS2 robotics developers with navigation stack development. The system focuses on specific subdomains, including:
 
 - **ROS2 robotics middleware**
 - **Nav2 navigation**
-- **Movit2 motion planning**
+- **MoveIt2 motion planning**
 - **Gazebo simulation**
 
 RAG combines retrieval-based and generation-based models, allowing it to retrieve relevant information from large corpora and generate domain-specific responses.
 
 ---
 
-### Project Goals & Strategy
-The goal is to build a RAG system capable of answering specific questions regarding ROS2 navigation and related topics. We will implement the system iteratively, continuously improving its components. Initial iterations focus on integration, with further refinements in subsequent milestones.
-
----
-
-### Milestones
-
-#### 1. Environment and Tooling Milestone
-- **Objective:** Set up a development environment using Docker Compose.
-- **Components:**
-  - **App:** For model training, serving, and API interactions.
-  - **MongoDB:** Database for storing raw RAG data after ETL.
-  - **Qdrant:** Vector search engine for the RAG system.
-  - **ClearML:** Experiment tracker and orchestrator.
-
-#### 2. ETL Milestone
-- **Objective:** Build an ETL pipeline to ingest ROS2 documentation and YouTube videos.
-- **Important:** Only CS370 Honors and CS-GY-6613 students need to handle video transcripts.
-- **Tool:** ClearML orchestrator to automate data ingestion and storage in MongoDB.
-
-#### 3. Featurization Pipeline Milestone
-- **Objective:** Implement a featurization pipeline to convert raw data into vectors.
-- **Tool:** Sentence Transformer model for vector embedding generation.
-- **Output:** Featurized data stored in MongoDB and Qdrant.
-
-#### 4. Fine-Tuning Milestone
-- **Objective:** Fine-tune a pre-trained Hugging Face model on the ROS2 subdomains.
-- **Tool:** Utilize existing fine-tuning tutorials, Google Colab, or other cloud services for model training.
-
-#### 5. Deploying the App Milestone
-- **Objective:** Develop a Gradio app for user interaction with the RAG system.
-- **Features:**
-  - Pre-populated questions related to ROS2 navigation.
-  - Use Ollama and Hugging Face Hub to pull the fine-tuned model.
-
-- **Example Questions:**
-  - "How can I navigate to a specific pose? Include replanning aspects in your answer."
-  - "Can you provide me with code for this task?"
+### What I Built
+1. **ETL Pipeline** — ingests ROS2 docs and YouTube transcripts into MongoDB via ClearML orchestration.
+2. **Featurization Pipeline** — converts raw data to dense vectors using fine-tuned Sentence Transformers, stored in Qdrant.
+3. **Fine-Tuned Model** — trained on domain-specific ROS2 Q/A pairs, hosted on [Hugging Face Hub](https://huggingface.co/ChaosKingNV/finetuned-ros2-model).
+4. **Query Layer** — FastAPI backend + Gradio frontend for natural language queries with vector retrieval + answer generation.
+5. **Containerized Deployment** — full stack runs via `docker-compose up --build`. Zero manual setup.
 
 ---
 
@@ -151,4 +133,3 @@ The goal is to build a RAG system capable of answering specific questions regard
 - **ClearML:** For experiment tracking and orchestration.
 - **Sentence Transformers:** For featurization (vector embeddings).
 - **Hugging Face:** For model fine-tuning and hosting.
-
